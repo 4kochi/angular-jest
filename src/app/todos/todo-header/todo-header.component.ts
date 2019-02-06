@@ -13,7 +13,7 @@ export class TodoHeaderComponent {
 
   addTodo() {
     if (this.newTodo.trim().length) {
-      this.todosService.add(this.newTodo);
+      this.todosService.add(this.newTodo.trim());
       this.newTodo = '';
     }
   }

@@ -27,5 +27,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to todo-angular!');
+    expect(compiled.querySelector('ul')).toMatchSnapshot();
   });
 });

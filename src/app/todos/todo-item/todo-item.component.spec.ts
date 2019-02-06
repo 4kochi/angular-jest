@@ -1,25 +1,26 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Todo } from '../todo.model';
 import { TodoItemComponent } from './todo-item.component';
 
 describe('TodoItemComponent', () => {
   let component: TodoItemComponent;
-  let fixture: ComponentFixture<TodoItemComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TodoItemComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TodoItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new TodoItemComponent();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should trigger the event to remove an item', done => {
+    component.todo = new Todo('demo');
+    expect.assertions(1);
+
+    component.itemRemoved.subscribe(id => {
+      expect(id).toBe(component.todo.uid);
+      done();
+    });
+
+    component.remove();
   });
 });
