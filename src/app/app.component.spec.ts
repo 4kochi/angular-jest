@@ -28,5 +28,10 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to todo-angular!');
     expect(compiled.querySelector('ul')).toMatchSnapshot();
+    expect(compiled.querySelector('h2')).toMatchInlineSnapshot(`
+<h2>
+  Here are some links to help you start:
+</h2>
+`);
   });
 });
